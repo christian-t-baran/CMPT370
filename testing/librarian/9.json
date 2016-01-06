@@ -1,0 +1,29 @@
+{ "script"	:
+	{	"serial"		:	2	
+	,	"team"			:	"B2"
+	,	"name"			:	"scan identify test"
+	,	"version"		:	1
+	,	"matches"		:	0
+	,	"wins"			:	0
+	,	"losses"		:	0
+	,	"executions"	:	0
+	,	"lived"			:	0
+	,	"died"			:	0
+	,	"health"		:	2
+	,	"absorbed"		:	0
+	,	"firepower"		:	3
+	,	"damages"		:	0
+	,	"kills"			:	0
+	,	"movement"		:	1
+	,	"distance"		:	0
+	,	"code"			:	[	{"variable" : "targetsFound" }
+							,	{"word" :   {   "name" : "identifyDummy"
+											,   "comment" : "( i -- )"
+											,	"body" : "identify! drop drop drop drop"}}
+							,	{"word"	:	{	"name" : "init" 
+											,	"comment" : "(--)"
+											,	"body" : "scan! targetsFound !"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "targetsFound ? 1 - 1 do I identifyDummy loop"}}
+							]	}	}

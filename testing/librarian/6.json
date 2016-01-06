@@ -1,0 +1,30 @@
+{ "script"	:
+	{	"serial"		:	2	
+	,	"team"			:	"B2"
+	,	"name"			:	"test variable"
+	,	"version"		:	1
+	,	"matches"		:	0
+	,	"wins"			:	0
+	,	"losses"		:	0
+	,	"executions"	:	0
+	,	"lived"			:	0
+	,	"died"			:	0
+	,	"health"		:	2
+	,	"absorbed"		:	0
+	,	"firepower"		:	3
+	,	"damages"		:	0
+	,	"kills"			:	0
+	,	"movement"		:	1
+	,	"distance"		:	0
+	,	"code"			:	[	{"variable" : "testVar"}
+							,	{"word"	:	{	"name" : "init" 
+											,	"comment" : "(--)"
+											,	"body" : "testVar ? 0 = if .\"uninitialized var is 0\" else .\"var should be 0\" then .
+testVar 1 ! testVar ? 1 = if .\"setting to 1 worked\" else .\"var should be 1\" then .
+testVar .\"test\" ! testVar ? .\"test\" = if .\"setting to test worked\" else .\"var should be test\" then .
+testVar true ! testVar ?  if .\"setting to true worked\" else .\"var should be true \" then .
+testVar .\"variable persisted across turn\" !"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "testVar ? ."}}
+							]	}	}

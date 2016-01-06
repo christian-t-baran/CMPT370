@@ -1,0 +1,26 @@
+{ "script":
+	{	"serial"		:	
+	,	"team"			:	
+	,	"name"			:	
+	,	"version"		:	
+	,	"matches"		:	
+	,	"wins"			:	
+	,	"losses"		:	
+	,	"executions"	:	
+	,	"lived"			:	
+	,	"died"			:	
+	,	"health"		:	
+	,	"absorbed"		:	
+	,	"firepower"		:	
+	,	"damages"		:	
+	,	"kills"			:	
+	,	"movement"		:	
+	,	"distance"		:	
+	,	"code"			:	[	{"variable" : "placeholder"}
+							,	{"word"	:	{	"name" : "init"
+											,	"comment" : "(--)"
+											,	"body" : "placeholder"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "placeholder"}}
+							]	}	}

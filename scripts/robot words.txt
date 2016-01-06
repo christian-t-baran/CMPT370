@@ -1,0 +1,111 @@
+Variables that might be useful:
+
+canShoot
+
+targetsFound
+
+curTarget
+
+Variable setting:
+
+canShoot? ( -- b)
+canShoot ? 
+
+curTarget? ( -- i)
+curTarget ?
+
+scanForTargets
+targetsFound scan! !
+
+examinedTargets
+
+
+Condition words:
+canShootTargetsLeft ( -- b )
+targetsFound ? > 0 canShoot ? and
+
+begin 
+
+Constant words:
+maxRange ( -- i )
+3;
+
+singleHex ( -- i )
+1;
+
+Query words:
+
+enemy? (i -- b)
+team <>
+
+canMove? ( -- b ) 
+movesLeft 1 =>; 
+
+canKill? ( i -- b )
+
+RandomWords:
+
+randomSafeRange ( -- ir)
+
+
+randomRange ( -- ir )
+3 random
+
+randomMovesLeft ( -- i)
+movesLeft random
+
+randomDirInRange (ir -- id ir) 
+dup 0 = if 0 else dup 6 * 1 - random then
+
+randomDirR1 ( -- i) 
+5 random;
+
+randomDirR2 ( -- i) 
+11 random;
+
+randomDirR3 ( -- i) 
+17 random;
+
+
+
+
+Words:
+
+shoot!! (ir id -- )
+canShoot false ! shoot!
+
+shootIfTargetEnemy ( -- )
+identify! enemy? if shoot!! drop else drop drop drop then
+
+identifyAndFire
+curTarget 0 ! begin shootIfTargetEnemy curTarget+ canShootAndTargetsRemain? until
+
+curTarget+ ( -- )
+curTarget ? 1 + curTarget swap !
+
+
+targetsRemain? ( -- b)
+curTarget ? targetsFound ? <
+
+canShootAndTargetsRemain ( -- b)
+canShoot? targetsRemain? and
+
+shoot!! (id -- id ir)
+shoot! canShoot false ! shoot!
+
+
+moveRandom1Hex ( -- ) 
+1 5 random move!
+
+moveRandom2Hex ( -- )
+2 11 random move!
+
+moveRandom3Hex ( -- )
+3 17 random move!
+
+
+
+moveLoop1 ( -- )
+begin moveRandomHex movesLeft canMove? until
+
+scanForTargets identifyAndFire moveLoop1

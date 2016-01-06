@@ -1,0 +1,70 @@
+{ "script"	:
+	{	"serial"		:	2	
+	,	"team"			:	"B2"
+	,	"name"			:	"Scout"
+	,	"version"		:	1
+	,	"matches"		:	0
+	,	"wins"			:	0
+	,	"losses"		:	0
+	,	"executions"	:	0
+	,	"lived"			:	0
+	,	"died"			:	0
+	,	"health"		:	3
+	,	"absorbed"		:	0
+	,	"firepower"		:	2
+	,	"damages"		:	0
+	,	"kills"			:	0
+	,	"movement"		:	2
+	,	"distance"		:	0
+	,	"code"			:	[	{"variable" : "canShoot" }
+							,	{"variable" : "targetsFound" }
+							,	{"variable" : "curTarget" }
+							,	{"word"	:	{	"name" : "moveRandomHex" 
+											,	"comment" : "(--)"
+											,	"body" : "5 random 1 move!"}}
+							,	{"word"	:	{	"name" : "canMove?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "movesLeft 0 =>"}}
+							,	{"word"	:	{	"name" : "canShoot?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "canShoot ?"}}
+							,	{"word"	:	{	"name" : "curTarget?" 
+											,	"comment" : "(-- v)"
+											,	"body" : "curTarget ?"}}
+							,	{"word"	:	{	"name" : "targetsRemain?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "curTarget ? targetsFound ? <"}}
+							,	{"word"	:	{	"name" : "canMove?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "movesLeft 1 =>"}}
+							,	{"word"	:	{	"name" : "canShootAndTargetsRemain?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "canShoot? targetsRemain? and"}}
+							,	{"word"	:	{	"name" : "scanForTargets" 
+											,	"comment" : "(--)"
+											,	"body" : "targetsFound scan! !"}}
+							,	{"word"	:	{	"name" : "shoot!!" 
+											,	"comment" : "(--)"
+											,	"body" : "canShoot false ! shoot!"}}
+							,	{"word"	:	{	"name" : "curTarget+" 
+											,	"comment" : "(-- b)"
+											,	"body" : "curTarget ? 1 + curTarget swap !"}}
+							,	{"word"	:	{	"name" : "enemy?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "team <>"}}
+							,	{"word"	:	{	"name" : "shootIfTargetEnemy" 
+											,	"comment" : "(-- b)"
+											,	"body" : "identify! enemy? if shoot!! drop else drop drop drop then"}}
+							,	{"word"	:	{	"name" : "identifyAndFire" 
+											,	"comment" : "(-- b)"
+											,	"body" : "curTarget 0 ! curTarget? begin curTarget? shootIfTargetEnemy curTarget+ canShootAndTargetsRemain? until"}}	
+							,	{"word"	:	{	"name" : "moveLoop1" 
+											,	"comment" : "(-- b)"
+											,	"body" : "begin moveRandomHex canMove? until"}}
+							,	{"word"	:	{	"name" : "init" 
+											,	"comment" : "(--)"
+											,	"body" : "moveLoop1"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "canShoot true ! scanForTargets identifyAndFire moveLoop1"}}
+							]	}	}

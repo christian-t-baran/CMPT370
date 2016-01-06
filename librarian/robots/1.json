@@ -1,0 +1,40 @@
+{ "script"	:
+	{	"serial"		:	1	
+	,	"team"			:	"B2"
+	,	"name"			:	"Random safe fire & move"
+	,	"version"		:	1
+	,	"matches"		:	0
+	,	"wins"			:	0
+	,	"losses"		:	0
+	,	"executions"	:	0
+	,	"lived"			:	0
+	,	"died"			:	0
+	,	"health"		:	4
+	,	"absorbed"		:	0
+	,	"firepower"		:	1
+	,	"damages"		:	0
+	,	"kills"			:	0
+	,	"movement"		:	3
+	,	"distance"		:	0
+	,	"code"			:	[	{"word"	:	{	"name" : "randomDirInRange"
+											,	"comment" : "(ir -- ir id)"
+											,	"body" : "dup 0 = if 0 else dup 6 * 1 - random then swap"}}
+							,	{"word"	:	{	"name" : "randomDirR1"
+											,	"comment" : "(-- id)"
+											,	"body" : "5 random"}}
+							,	{"word"	:	{	"name" : "randomSafeRange"
+											,	"comment" : "(-- ir)"
+											,	"body" : "2 random 1 +"}}
+							,	{"word"	:	{	"name" : "moveRandomHex" 
+											,	"comment" : "(--)"
+											,	"body" : "randomDirR1 1 move!"}}
+							,	{"word"	:	{	"name" : "canMove?" 
+											,	"comment" : "(-- b)"
+											,	"body" : "movesLeft 0 =>"}}
+							,	{"word"	:	{	"name" : "init" 
+											,	"comment" : "(--)"
+											,	"body" : "moveRandomHex"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "randomSafeRange randomDirInRange shoot! moveRandomHex"}}
+							]	}	}

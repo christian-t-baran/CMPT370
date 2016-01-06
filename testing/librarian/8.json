@@ -1,0 +1,31 @@
+{ "script"	:
+	{	"serial"		:	2	
+	,	"team"			:	"B2"
+	,	"name"			:	"fire range0-3 random"
+	,	"version"		:	1
+	,	"matches"		:	0
+	,	"wins"			:	0
+	,	"losses"		:	0
+	,	"executions"	:	0
+	,	"lived"			:	0
+	,	"died"			:	0
+	,	"health"		:	2
+	,	"absorbed"		:	0
+	,	"firepower"		:	3
+	,	"damages"		:	0
+	,	"kills"			:	0
+	,	"movement"		:	1
+	,	"distance"		:	0
+	,	"code"			:	[	{"word"	:	{	"name" : "randomRange"
+											,	"comment" : "(-- i)"
+											,	"body" : "3 random"}}
+							,	{"word"	:	{	"name" : "randomDirInRange"
+											,	"comment" : "(ir -- ir id)"
+											,	"body" : "dup 0 = if 0 else dup 6 * 1 - random then swap"}}
+							,	{"word"	:	{	"name" : "init" 
+											,	"comment" : "(--)"
+											,	"body" : "0 recv!"}}
+							,	{"word"	:	{	"name" : "turn" 
+											,	"comment" : "(--)"
+											,	"body" : "randomRange randomDirInRange shoot!"}}
+							]	}	}
